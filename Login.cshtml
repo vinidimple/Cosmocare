@@ -1,0 +1,54 @@
+﻿@model CosmoApp.Models.User_LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Cosmo Care Clinic Login";
+}
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <th>@Html.LabelFor(a => a.LoginID)</th>
+                <td>@Html.TextBoxFor(a => a.LoginID)</td>
+                <td>@Html.ValidationMessageFor(a => a.LoginID)</td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(a => a.Password)
+                </th>
+                <td>
+                    @Html.PasswordFor(a => a.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Password)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" class="Loginbutton-Login" />                
+                </td>
+                <td><input type="submit" value="Cancel" class="Loginbutton-Cancel" /> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Register" class="Register" /></td>
+                <td> </td>
+            </tr>
+        </table>
+    }
+
+
+@* This below line is for create javascript section *@
+
+@*@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
